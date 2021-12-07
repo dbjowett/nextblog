@@ -6,6 +6,10 @@ excerpt: 'NextJS is the React framework for production. It makes building fullst
 isFeatured: true
 ---
 
-# This is a title
+# This is a h1 title
 
-This is a regular title with a link
+## This is an h2
+
+##### This is an h5
+
+This is a regular title with a [link](https://google.com)
