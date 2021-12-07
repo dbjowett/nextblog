@@ -1,3 +1,5 @@
+import PostContent from '../../components/posts/post-detail/post-content';
+
 export default function SinglePost() {
-  return <div className={styles.container}>Single Post</div>;
+  return <PostContent />;
 }
