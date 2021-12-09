@@ -8,8 +8,4 @@ isFeatured: true
 
 # This is a h1 title
 
-## This is an h2
-
-##### This is an h5
-
 This is a regular title with a [link](https://google.com)
