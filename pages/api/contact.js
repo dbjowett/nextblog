@@ -1,8 +1,8 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import { MongoClient } from 'mongodb';
+const URI = 'mongodb+srv://dbjowett:0C5n4gDn2knocz2o@cluster0.rm7by.mongodb.net/my-blog?retryWrites=true&w=majority';
 
-const URL = 'mongodb+srv://dbjowett:<password>@cluster0.rm7by.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
-
-export default function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method === 'POST') {
     const { email, name, message } = req.body;
 
@@ -11,15 +11,34 @@ export default function handler(req, res) {
       return;
     }
 
-    ///Store in a database
-
     const newMessage = {
       email,
       name,
       message
     };
 
-    console.log(newMessage);
+    let client = await MongoClient.connect(URI);
+
+    try {
+      client = await MongoClient.connect(URI);
+    } catch (err) {
+      res.status(500).json({ message: 'Could not connect to database;' });
+      console.log(err);
+      return;
+    }
+
+    const db = client.db();
+
+    try {
+      const result = await db.collection('messages').insertOne(newMessage);
+      newMessage._id = result.insertedId;
+    } catch (err) {
+      client.close();
+      res.status(500).json({ message: 'Message storing failed' });
+      return;
+    }
+
+    client.close();
 
     res.status(201).json({ message: 'Message Stored successfully' });
   }

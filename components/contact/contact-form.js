@@ -1,25 +1,44 @@
 import classes from './contact-form.module.css';
 import { useState } from 'react';
+import Notification from '../ui/notification';
+
+async function sendContactData(contactDetails) {
+  const response = await fetch('/api/contact', {
+    method: 'POST',
+    body: JSON.stringify(contactDetails),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    setReqStatus('error');
+    throw new Error(data.message || 'Something went wrong.');
+  }
+}
 
 export default () => {
   const [currentEmail, setCurrentEmail] = useState('');
   const [currentName, setCurrentName] = useState('');
   const [currentMessage, setCurrentMessage] = useState('');
+  const [reqStatus, setReqStatus] = useState(); // Pending, success, error
 
-  function sendMessageHandler(e) {
+  async function sendMessageHandler(e) {
     e.preventDefault();
+    setReqStatus('pending');
 
-    fetch('/api/contact', {
-      method: 'POST',
-      body: JSON.stringify({
+    try {
+      await sendContactData({
         email: currentEmail,
         name: currentName,
         message: currentMessage
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
+      });
+      setReqStatus('success');
+    } catch (err) {
+      setReqStatus('error');
+    }
   }
 
   return (
