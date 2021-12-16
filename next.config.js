@@ -1,4 +1,7 @@
 module.exports = {
+  env: {
+    mongodb_username: 'daniel'
+  },
   reactStrictMode: true,
   future: {
     webpack5: true // by default, if you customize webpack config, they switch back to version 4.
@@ -10,7 +13,6 @@ module.exports = {
       // by next.js will be dropped. Doesn't make much sense, but how it is
       fs: false // the solution
     };
-
     return config;
   }
 };
