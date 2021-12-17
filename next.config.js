@@ -1,7 +1,12 @@
+const { PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD, PHASE_PRODUCTION_SERVER } = require('next/constants');
+
 module.exports = {
-  env: {
-    mongodb_username: 'daniel'
-  },
+  // env: {
+  //   mongodb_username: 'dbjowett',
+  //   mongodb_password: '0C5n4gDn2knocz2o',
+  //   mongodb_clustername: 'cluster0',
+  //   mongodb_database: 'my-blog'
+  // },
   reactStrictMode: true,
   future: {
     webpack5: true // by default, if you customize webpack config, they switch back to version 4.

@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import ContactForm from '../components/contact/contact-form';
-import Next from 'next/head';
+import Head from 'next/head';
 
 export default function ContactPage() {
   return (

@@ -2,11 +2,8 @@ import Head from 'next/head';
 import { Fragment } from 'react';
 import PostContent from '../../components/posts/post-detail/post-content';
 import { getPostsFiles, getPostData, getAllPosts } from '../../lib/posts-util';
-import Head from 'next/head';
 
 export default function SinglePost({ post }) {
-  //// This works!! and logs a whole post in an object
-  // console.log(post);
   return (
     <Fragment>
       <Head>

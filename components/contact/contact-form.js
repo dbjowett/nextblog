@@ -19,7 +19,7 @@ async function sendContactData(contactDetails) {
   }
 }
 
-export default () => {
+export default function ContactForm() {
   const [currentEmail, setCurrentEmail] = useState('');
   const [currentName, setCurrentName] = useState('');
   const [currentMessage, setCurrentMessage] = useState('');
@@ -108,4 +108,4 @@ export default () => {
       {notification && <Notification status={notification.status} title={notification.title} message={notification.message} />}
     </section>
   );
-};
+}

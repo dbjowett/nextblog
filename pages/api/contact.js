@@ -1,6 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { MongoClient } from 'mongodb';
-const URI = 'mongodb+srv://dbjowett:0C5n4gDn2knocz2o@cluster0.rm7by.mongodb.net/my-blog?retryWrites=true&w=majority';
+
+const URI = `mongodb+srv://${process.env.mongodb_username}:${process.env.mongodb_password}@${process.env.mongodb_clustername}.rm7by.mongodb.net/${process.env.mongodb_database}?retryWrites=true&w=majority`;
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {

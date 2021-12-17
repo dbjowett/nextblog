@@ -8,7 +8,7 @@ export default function Home({ featPosts }) {
   return (
     <Fragment>
       <Head>
-        <title>Daniel's blog</title>
+        <title>Daniels blog</title>
         <meta name='description' content='I post about web development' />
       </Head>
       <Hero />
